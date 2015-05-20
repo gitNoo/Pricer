@@ -45,7 +45,6 @@ struct NODE* makeNode(char* _strOderID, double _dPrice, int _iSize)
  */
 void addList(struct NODE** _list, struct NODE* _pNode, bool _isAsc)
 {
-	int* x = new int[5];
 	if(_pNode == NULL)
 		return;
 
@@ -225,8 +224,8 @@ int main(int argc, char** argvs)
 						if(!compareDoubles(dTotal,dTotalS))
 						{
 							dTotalS = dTotal;
-							printf("%d S %2.0f\n",iTime, dTotalS );
-							fprintf(fileOut,"%d S %2.0f\n", iTime, dTotalS);
+							printf("%d S %0.2f\n",iTime, dTotalS );
+							fprintf(fileOut,"%d S %0.2f\n", iTime, dTotalS);
 						}
 					}else if(dTotalS > 0)
 					{
@@ -234,7 +233,8 @@ int main(int argc, char** argvs)
 						printf("%d S NA\n", iTime);
 						fprintf(fileOut,"%d S NA\n", iTime);
 					}
-					if(reduceSize(&listSell, strOderID, iSize))
+				}
+				else if(reduceSize(&listSell, strOderID, iSize))
 					{
 						double dTotal = getTotal(listSell, iTargetSize);
 						if(dTotal > 0)
@@ -242,8 +242,8 @@ int main(int argc, char** argvs)
 							if(!compareDoubles(dTotal,dTotalB))
 							{
 								dTotalB = dTotal;
-								printf("%d B %2.0f\n",iTime, dTotalB );
-								fprintf(fileOut,"%d B %2.0f\n", iTime, dTotalB);
+								printf("%d B %0.2f\n",iTime, dTotalB );
+								fprintf(fileOut,"%d B %0.2f\n", iTime, dTotalB);
 							}
 						}else if(dTotalB > 0)
 						{
@@ -252,7 +252,6 @@ int main(int argc, char** argvs)
 							fprintf(fileOut,"%d B NA\n", iTime);
 						}
 					}
-				}
 			}
 		}
 		fclose(fileIn);
