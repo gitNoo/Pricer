@@ -169,9 +169,6 @@ int main(int argc, char** argvs)
 		{
 			strLine[0] = '\0';//Clear line before get new line.
 			fgets(strLine,BUFFER,fileIn);
-			#ifdef _NOO_
-			char* pstrLine = strLine;
-			#endif
 			if(strlen(strLine)==0)
 				break;
 
